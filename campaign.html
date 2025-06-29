@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nearby Blood Campaigns</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #fff5f5, #ffe3e3);
+      color: #2d2d2d;
+    }
+
+    h1 {
+      text-align: center;
+      color: #d90429;
+      font-size: 2.2rem;
+      margin: 30px 0 10px;
+    }
+
+    .campaigns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: #2b2d42;
+      font-size: 1.3rem;
+    }
+
+    .card p {
+      margin: 6px 0;
+      font-size: 0.95rem;
+    }
+
+    .map-link {
+      display: inline-block;
+      margin-top: 12px;
+      background: #ef233c;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .map-link:hover {
+      background: #c80028;
+    }
+
+    .loading, .error {
+      text-align: center;
+      padding: 40px 10px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .loading::after {
+      content: "⏳";
+      display: block;
+      font-size: 1.6rem;
+      margin-top: 10px;
+      animation: bounce 1.2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🩸 Blood Donation Campaigns Near You</h1>
+  <div class="loading" id="loading">Fetching your location...</div>
+  <div class="error" id="error" style="display: none;">Unable to fetch location or campaigns.</div>
+  <div class="campaigns" id="campaignList" style="display: none;"></div>
+
+  <script>
+    async function getLocationAndFetchCampaigns() {
+      try {
+        const loading = document.getElementById("loading");
+        const error = document.getElementById("error");
+        const campaignList = document.getElementById("campaignList");
+
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+
+          // Reverse Geocoding
+          const geoURL = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
+          const geoRes = await fetch(geoURL);
+          const geoData = await geoRes.json();
+
+          const city = geoData.address.city || geoData.address.town || geoData.address.village || geoData.address.state;
+          const state = geoData.address.state;
+
+          loading.innerText = `📍 Detected: ${city}, ${state}\nSearching for campaigns near you...`;
+
+          // API to fetch campaigns
+          const apiURL = `https://bloodconnect.org/api/getCampaigns?city=${encodeURIComponent(city)}&state=${encodeURIComponent(state)}`;
+          const campaignRes = await fetch(apiURL);
+          const campaignData = await campaignRes.json();
+
+          if (!Array.isArray(campaignData)) throw new Error("Invalid API response");
+
+          loading.style.display = "none";
+          campaignList.style.display = "grid";
+
+          campaignData.forEach(camp => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+              <h3>${camp.name}</h3>
+              <p><strong>Date:</strong> ${camp.date}</p>
+              <p><strong>Time:</strong> ${camp.time}</p>
+              <p><strong>Address:</strong> ${camp.address}</p>
+              <a class="map-link" target="_blank"
+                 href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(camp.address)}">
+                📍 View on Map
+              </a>
+            `;
+            campaignList.appendChild(card);
+          });
+
+        }, () => {
+          loading.style.display = "none";
+          error.style.display = "block";
+          error.innerText = "❌ Location permission denied. Please allow location access.";
+        });
+      } catch (err) {
+        console.error(err);
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("error").style.display = "block";
+        document.getElementById("error").innerText = "⚠️ Something went wrong while fetching data.";
+      }
+    }
+
+    getLocationAndFetchCampaigns();
+  </script>
+</body>
+</html>

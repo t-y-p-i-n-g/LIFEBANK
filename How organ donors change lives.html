@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Organ & Blood Donation Change Lives</title>
+  <style>
+    /* basic reset */
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+    body {background: #f9f9fb; color: #333; line-height: 1.6;}
+
+    /* HERO */
+    header {
+      background: #c62828;
+      color: #fff;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 1rem;
+    }
+    header::after {
+      display: none;
+    }
+    header .hero {
+      position: relative;
+      max-width: 800px;
+    }
+    header h1 {font-size: 3rem; margin-bottom: .5rem;}
+    header p {font-size: 1.25rem;}
+
+    /* SECTIONS */
+    section {
+      padding: 4rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #c62828;
+    }
+    section p {margin-bottom: 1rem;}
+
+    /* FLEX LAYOUT */
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .flex img {
+      flex: 1 1 380px;
+      border-radius: 8px;
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .flex .content {
+      flex: 1 1 380px;
+    }
+
+    /* STATS GRID */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .stat-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .stat-card:hover {transform: translateY(-5px);} 
+    .stat-card h3 {font-size: 2rem; color: #c62828; margin-bottom: .5rem;}
+
+    /* CTA */
+    .cta {text-align: center; margin: 4rem 0;}
+    .cta-btn {
+      background: #c62828;
+      color: #fff;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.125rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .cta-btn:hover {background: #ad1d1d;}
+
+    /* FOOTER */
+    footer {background: #222; color: #ddd; text-align: center; padding: 2rem 1rem; font-size: .875rem;}
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      header {height: 50vh;}
+      header h1 {font-size: 2rem;}
+      header p {font-size: 1rem;}
+    }
+
+    /* FADE-IN ANIMATION */
+    .fade-in {opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out;}
+    .visible {opacity: 1; transform: none;}
+  </style>
+</head>
+<body>
+
+  <header class="fade-in">
+    <div class="hero">
+      <h1>Giving Life, One Gift at a Time</h1>
+      <p>Discover how organ and blood donations heal families and create hope.</p>
+    </div>
+  </header>
+
+  <section id="organ-donation" class="fade-in">
+    <h2>Organ Donation: A Legacy of Life</h2>
+    <div class="flex">
+      <img src="images/savess.jpg" alt="Surgeons performing transplant">
+      <div class="content">
+        <p>One organ donor can save up to <strong>eight lives</strong> and enhance dozens more through tissue donation. Kidneys liberate patients from dialysis, livers rescue those with end-stage disease, and hearts beat anew in grateful recipients.</p>
+        <p>Tissues such as corneas restore sight, while skin grafts accelerate healing for burn victims. Each gift transforms despair into possibility.</p>
+        <div class="stats">
+          <div class="stat-card">
+            <h3>8</h3>
+            <p>Lives saved per donor</p>
+          </div>
+          <div class="stat-card">
+            <h3>75+</h3>
+            <p>Lives improved with tissues</p>
+          </div>
+          <div class="stat-card">
+            <h3>20</h3>
+            <p>People die daily waiting <span style="white-space:nowrap;">(U.S.)</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blood-donation" class="fade-in" style="background:#fff4f5;">
+    <h2>Blood Donation: The Everyday Miracle</h2>
+    <div class="flex">
+      <div class="content">
+        <p>Every <strong>two seconds</strong> someone needs blood. From accident victims and surgical patients to mothers in childbirth, the demand is constant—and only humans can supply it.</p>
+        <p>A single pint can save up to <strong>three lives</strong>. Regular donors form a quiet army of heroes, ensuring hospitals never face an empty shelf.</p>
+        <div class="stats">
+          <div class="stat-card">
+            <h3>2&nbsp;sec</h3>
+            <p>Frequency of need</p>
+          </div>
+          <div class="stat-card">
+            <h3>3×</h3>
+            <p>Lives per blood unit</p>
+          </div>
+          <div class="stat-card">
+            <h3>120&nbsp;min</h3>
+            <p>Platelet shelf life</p>
+          </div>
+        </div>
+      </div>
+      <img src="images/save2.jpg" alt="Blood donor smiling while giving blood">
+    </div>
+  </section>
+
+  <section id="stories" class="fade-in">
+    <h2>Stories of Hope</h2>
+    <div class="flex">
+      <img src="images/dau.jpg" alt="Mother hugging child">
+      <div class="content">
+        <p><em>“Thanks to a stranger’s liver, I watched my daughter graduate.” — Rahul, 47</em></p>
+        <p><em>“Blood donors I’ll never meet kept me alive through chemo.” — Aisha, 9</em></p>
+        <p>Real stories remind us that behind every statistic is a family reunited, a milestone celebrated, a life continued.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta fade-in">
+    <h2>Ready to Make a Difference?</h2>
+    <p>Register as an organ donor, schedule a blood donation, or volunteer today.</p>
+    <button class="cta-btn" onclick="alert('Redirecting to registration portal...')">Join the Lifesavers</button>
+  </section>
+
+  <footer class="fade-in">
+    <p>&copy; 2025 LifeGivers Initiative. Images &copy; Unsplash photographers. Replace with your own for production.</p>
+  </footer>
+
+  <script>
+    // fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

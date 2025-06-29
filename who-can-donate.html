@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Organ Donor Info</title>
+<style>
+  /* ---------- Base ---------- */
+  :root{
+    --primary-green:#007c5a;
+    --primary-purple:#990099;
+  }
+  body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#222;
+    background:#fff;
+  }
+  a{color:var(--primary-purple);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ---------- Layout ---------- */
+  .container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px 20px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:40px;
+  }
+  .main-content{flex:2 1 500px}
+  .sidebar{flex:1 1 250px}
+
+  /* ---------- Headlines ---------- */
+  h1{font-size:28px;margin:0 0 20px}
+  h2{font-size:22px;margin:25px 0 15px}
+
+  /* ---------- Intro Section ---------- */
+  .intro{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    align-items:flex-start;
+    margin-bottom:20px;
+  }
+  .intro img{
+    width:300px;border-radius:6px
+  }
+  .note{
+    margin:15px 0;
+    padding:12px;
+    background:#ede3f0;
+    border-left:4px solid #b36cb3;
+  }
+
+  /* ---------- Tag Buttons ---------- */
+  .tags{margin-top:20px}
+  .tag{
+    display:inline-block;
+    margin:5px 8px 5px 0;
+    padding:8px 16px;
+    font-size:14px;
+    border:1px solid var(--primary-purple);
+    border-radius:20px;
+    color:var(--primary-purple);
+    background:#fff;
+    cursor:pointer;
+  }
+
+  /* ---------- Sidebar ---------- */
+  .donate-card{
+    background:#f2f8f3;
+    border-left:6px solid var(--primary-green);
+    padding:25px 20px;
+    text-align:center;
+    border-radius:6px;
+  }
+  /* Tick symbol */
+  .tick{
+    font-size:60px;
+    color:var(--primary-green);
+    line-height:1;
+  }
+
+  /* Button/link styled as button */
+  .btn{
+    display:inline-block;
+    margin-top:12px;
+    padding:10px 24px;
+    font-size:16px;
+    border:none;
+    border-radius:4px;
+    background:var(--primary-green);
+    color:#fff;
+    cursor:pointer;
+    transition:box-shadow .15s ease;
+  }
+  /* green glow while pressed */
+  .btn:active{
+    box-shadow:0 0 12px 4px var(--primary-green);
+  }
+
+  /* ---------- Why Register box ---------- */
+  .why{
+    margin-top:35px;
+  }
+  .why img{
+    width:100%;
+    border-radius:6px;
+  }
+  .why h4{margin:10px 0 8px}
+  .answers-link{
+    margin-top:10px;
+    display:inline-block;
+    font-weight:bold;
+    position:relative;
+    padding-bottom:2px;
+    transition:box-shadow .15s ease;
+  }
+  /* purple glow while pressed */
+  .answers-link:active{
+    box-shadow:0 0 12px 4px var(--primary-purple);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:768px){
+    .container{flex-direction:column}
+  }
+  html {
+  scroll-behavior: smooth;
+}
+footer{ text-align:center; padding:1rem; background:#222;margin-top:2rem;color: #fff;font-size: 0.9rem}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- ---------------- Main ---------------- -->
+  <div class="main-content">
+    <h1>Who can become an organ donor?</h1>
+    <h2>Organ donation and eligibility</h2>
+
+    <div class="intro">
+      <img src="images/cfg.avif" alt="Man in pink shirt">
+      <div>
+        <p>Anyone can register a decision to become an organ donor after death, there is no age limit.</p>
+        <p>To donate organs after death, a person needs to die in hospital in specific circumstances.</p>
+        <div class="note">
+          To add your name to the NHS Organ Donor Register you'll need to live in the UK, Channel Islands or Isle of Man.
+        </div>
+      </div>
+    </div>
+
+    <p>Specialist healthcare professionals decide in each individual case whether a person’s organs and tissue are suitable for donation.</p>
+    <p>For more information about eligibility for organ donation after death, please select a category below.</p>
+    <p><a href="#">Information about becoming a living organ donor</a></p>
+
+    <div class="tags">
+  <a href="#age-limit" class="tag">Age limit</a>
+  <a href="#medical-conditions" class="tag">Medical conditions</a>
+  <a href="#cancer" class="tag">Cancer</a>
+  <a href="#lifestyle" class="tag">Lifestyle choices</a>
+  <a href="#smoking" class="tag">Smoking</a>
+  <a href="#tattoos" class="tag">Tattoos</a>
+  <a href="#alcohol" class="tag">Alcohol</a>
+  <a href="#ethnicity" class="tag">Ethnicity</a>
+  <a href="#non-blood" class="tag">Non-blood donors</a>
+</div>
+ <!-- Sections start here -->
+  <div id="age-limit" class="section">
+    <hr style="margin: 40px 0; border-top: 1px solid #342578;">
+    <h2>Age limit</h2>
+    <h3>Is there an age limit for becoming an organ donor?</h3>
+    <p>There is no age limit for becoming an organ donor.</p>
+    <p>The decision about whether some or all organs or tissue are suitable for transplant is always made by medical specialists at the time of donation, taking into account your medical, travel and social history.</p>
+    <h3>Can children join the NHS Organ Donor Register?</h3>
+    <p>Parents and guardians can register their children, and children can register themselves.</p>
+    <p>Children under 12 in Scotland and under 18 in the rest of the UK at the time of registration will require their parent or guardian’s agreement for donation to take place.</p>
+  </div>
+
+  <hr style="margin: 40px 0; border-top: 1px solid #342578;">
+  <div id="medical-conditions" class="section">
+    <h2>Medical conditions</h2>
+    <h3>Can you become an organ donor if you have a medical condition?</h3>
+    <p>Having an illness or medical condition doesn’t necessarily prevent a person from becoming an organ or tissue donor. The decision about whether some or all organs or tissue are suitable for transplant is made by medical specialists at the time of donation.</p>
+    <p>A person cannot become an organ donor if they have or are suspected of having:</p>
+    <div style="font-size: 0.9em;">
+  <ul>
+    <li>Creutzfeldt-Jakob Disease (CJD)</li>
+    <li>Ebola virus disease</li>
+    <li>Active cancer</li>
+    <li>HIV*</li>
+  </ul>
+</div>
+
+    <p>*In rare cases, donors with HIV have helped others with the same condition. Doctors will decide if the organs are suitable.</p>
+  </div>
+
+<hr style="margin: 40px 0; border-top: 1px solid #342578;">
+  <div id="cancer" class="section">
+    <h2>Cancer</h2>
+    <p>In some cases, people who have had cancer can still donate. It depends on the type, treatment, and timing of the cancer.</p>
+  </div>
+
+  <hr style="margin: 40px 0; border-top: 1px solid #342578;">
+  <div id="lifestyle" class="section">
+    <h2>Lifestyle choices</h2>
+     <div id="smoking" class="section"></div>
+</div>
+  <div id="smoking" class="section">
+    <h2>Can you become an organ donor if you smoke?</h2>
+   <p>There is no age limit for becoming an organ donor.</p>
+    <p>It is still possible to become an organ donor if you smoke. Specialist healthcare professionals decide in each individual case whether a person's organs and tissue are suitable for donation, and smokers and people with other health conditions have saved - and continue to save - lives through organ donation. </p>
+  </div>
+  <div id="tattoos" class="section">
+    <h2>Can you become an organ donor if you have a tattoo?</h2>
+    <p>Having a tattoo does not prevent you from becoming an organ donor.</p>
+  </div>
+  <div id="alcohol" class="section">
+    <h2>Can you become an organ donor if you drink alcohol?</h2>
+    <p>Drinking alcohol does not prevent you from becoming an organ donor. Although a heavy alcohol intake might affect your ability to donate some organs, specialist healthcare professionals will decide which organs and tissue are suitable for donation on an individual basis.</p>
+  </div>
+
+  <hr style="margin: 40px 0; border-top: 1px solid #342578;">
+  <div id="ethnicity" class="section">
+    <h2>Ethnicity</h2>
+    <h2>Does race, or ethnicity matter in organ donation?</h2>
+    <p>We need donors from all communities and ethnicities.</p>
+    <p>Blood and tissue types need to match for a transplant to be successful, and organs from donors of the same ethnic background as the recipient are more likely to be a close match.</p>
+  </div>
+
+  <hr style="margin: 40px 0; border-top: 1px solid #342578;">
+  <div id="non-blood" class="section">
+    <h2>Non-blood donors</h2>
+    <h2>Can you become an organ donor if you are unable to donate blood?</h2>
+    <p>There may be specific reasons why it has not been possible to donate blood such as having had a blood transfusion (or blood products) since 1 January 1980. Or there may be reasons why you could not give blood because of your health at the time. Sometimes a simple thing like a cold or medication that you are taking can prevent you from donating blood.</p>
+    <p>The decision about whether some or all organs or tissue are suitable for transplant is always made by a medical specialist at the time of donation, taking into account your medical history.</p>
+  </div>
+  <hr style="margin: 40px 0; border-top: 1px solid #342578;">
+  </div>
+
+  <!-- ---------------- Sidebar ---------------- -->
+  <aside class="sidebar">
+    <div class="donate-card">
+      <div class="tick">✔</div>
+      <h3 style="margin:15px 0 5px">DONATE</h3>
+      <!-- Anchor styled as button -->
+      <a href="organ/organ.html" class="btn">Register to donate</a>
+    </div>
+
+    <div class="why">
+      <img src="images/conf.jpg" alt="Why register?">
+      <h4>Why register?</h4>
+      <p>Find out why it’s really important that you do.</p>
+      <a href="info/Who can donate/why-register/reg.html" class="answers-link">Get answers here</a>
+    </div>
+  </aside>
+</div>
+ <footer>
+    <p>© 2025 NHS England – Organ Donation Campaign</p>
+  </footer>
+</body>
+</html>

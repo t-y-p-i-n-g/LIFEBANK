@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Ethnicity Matters - LifeBanked</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand-red: #ff4c4c;
+      --deep-red:  #d10000;
+      --rose-tint: #ffe6f0;
+      --rose-dark: #cc0066;
+    }
+
+    /* ---------- Base ---------- */
+    *       { box-sizing: border-box; }
+    body    { margin: 0; font-family: 'Poppins', sans-serif; background:#fff5f5; color:#333; }
+    h2      { color: var(--deep-red); margin-top: 2rem; }
+    p       { font-size:1.1rem; line-height:1.8; }
+
+    /* ---------- Header ---------- */
+    header  { background:var(--brand-red); color:#fff; text-align:center; padding:1.5rem 1rem; font-size:2rem; font-weight:600; }
+
+    /* ---------- Layout ---------- */
+    .container        { max-width:1000px; margin:auto; padding:2rem; }
+    .video-info-wrap  { display:flex; flex-wrap:wrap; gap:20px; margin-top:2.5rem; }
+    .video-box,
+    .info-box         { flex:1; min-width:280px; }
+    iframe            { width:100%; height:215px; border:none; border-radius:6px; }
+
+    /* ---------- Info box ---------- */
+    .info-box         { background:var(--rose-tint); padding:1rem 1.5rem; border-left:4px solid var(--rose-dark); }
+    .info-box h3      { color:var(--rose-dark); margin-top:0; }
+
+    /* ---------- Highlight ---------- */
+    .highlight        { background:#fff0f0; padding:1rem; border-left:5px solid var(--brand-red); margin-top:2rem; font-weight:bold; }
+
+    /* ---------- Footer ---------- */
+    footer            { text-align:center; padding:1rem; background:#222;margin-top:2rem;color: #fff;font-size: 0.9rem}
+
+    /* ---------- Responsive tweaks ---------- */
+    @media (max-width:600px) {
+      header          { font-size:1.5rem; }
+      .container      { padding:1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= Page Header ======= -->
+  <header>Why Ethnicity Matters</header>
+
+  <div class="container">
+    <!-- ======= Intro Paragraph ======= -->
+    <p>
+      We need donors from every community. Why? Because blood and organ compatibility is influenced by genetic
+      background, which varies between ethnic groups. When donors reflect the diversity of patients, it increases
+      the chances of successful, life-saving transplants.
+    </p>
+
+    <!-- ======= Video + Info block (NOW ABOVE #1) ======= -->
+    <div class="video-info-wrap">
+      <!-- Video -->
+      <div class="video-box">
+        <h3>Watch our short video</h3>
+        <!-- ✏️  Replace YOUR_VIDEO_ID with the real ID -->
+        <iframe src="https://www.youtube.com/embed/dJi1zpoaYzE"
+                title="Organ Donation: Ethnicity Matters"
+                allowfullscreen></iframe>
+      </div>
+
+      <!-- Info box -->
+      <div class="info-box">
+        <h3>Did you know?</h3>
+        <p>
+          Black, Asian and minority-ethnic patients often wait significantly longer for a successful match than white
+          patients, due to a shortage of suitably matched donors.
+        </p>
+        <p>
+          If more people with these ethnic backgrounds donated their organs after death, or as living donors, transplant
+          waiting times would fall dramatically.
+        </p>
+      </div>
+    </div>
+
+    <!-- ======= Main Content ======= -->
+    <h2>1. Better Compatibility</h2>
+    <p>
+      Blood types and tissue markers are more likely to match between people of the same ethnicity.
+      For bone marrow and kidney donations especially, genetic markers called HLA (Human Leukocyte Antigens) are crucial
+      and inherited.
+    </p>
+
+    <h2>2. Reduce Waiting Time</h2>
+    <p>
+      Patients from minority ethnic groups often wait longer for a suitable donor because there are fewer registered
+      donors from their communities. Increasing donor diversity helps bridge this gap.
+    </p>
+
+    <h2>3. Better Transplant Outcomes</h2>
+    <p>
+      Closer genetic matches lower the risk of rejection and lead to improved long-term success, fewer complications,
+      and better quality of life for recipients.
+    </p>
+
+    <h2>4. Promoting Fairness in Healthcare</h2>
+    <p>
+      Everyone deserves an equal chance at life-saving treatment. By registering as a donor, you help make healthcare
+      fairer and more accessible for all, regardless of race or heritage.
+    </p>
+
+    <!-- Highlight -->
+    <div class="highlight">
+      Your decision to donate could save someone in your own community.
+    </div>
+  </div>
+
+  <!-- ======= Footer ======= -->
+  <footer>© 2025 LifeBanked. All rights reserved.</footer>
+
+</body>
+</html>

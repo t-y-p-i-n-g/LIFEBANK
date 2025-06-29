@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blood Donation & Donor Network</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --space-base: 1rem;
+      --radius-base: 12px;
+      --color-accent: #ef4444;
+      --color-accent-hover: #dc2626;
+      --color-bg: #ffffff;
+      --color-text-primary: #111827;
+      --color-text-secondary: #6b7280;
+
+      --clr-bg: #f7f9fc;
+      --clr-card-bg: #ffffff;
+      --clr-text-main: #222;
+      --clr-text-muted: #555;
+      --clr-border: #eeeeee;
+      --clr-accent: #ff5900;
+      --radius: 12px;
+      --shadow: 0 10px 20px rgba(0,0,0,.08);
+      --shadow-hover: 0 18px 35px rgba(0,0,0,.15);
+      --dur: .3s;
+      --easing: cubic-bezier(.4,0,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%; overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background: var(--clr-bg); color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      position: sticky; top: 0; background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,.05); z-index: 100;
+    }
+    nav {
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 1rem var(--space-base);
+    }
+    .nav-links {
+      display: flex; gap: 1.5rem; list-style: none;
+    }
+    .nav-links a {
+      font-weight: 600; color: var(--color-accent);
+      padding: .35rem .5rem; border-radius: var(--radius-base);
+    }
+    .nav-links a:hover {
+      background: var(--color-accent); color: #fff;
+    }
+
+    .hero {
+      text-align: center; padding: 4rem var(--space-base) 3rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem; font-weight: 800;
+      color: var(--color-text-primary);
+    }
+    .hero p {
+      font-size: 1.125rem; margin-top: .75rem;
+    }
+    .cta-button {
+    .cta-button:hover {
+      background: var(--color-accent-hover); transform: scale(1.05);
+    }
+
+    .slideshow {
+      margin: 4rem 0; border-radius: var(--radius-base);
+      overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.1);
+      aspect-ratio: 16/9;
+    }
+      display: inline-block; margin-top: 2rem;
+      padding: .75rem 2.5rem;
+      background: var(--color-accent); color: #fff;
+      border-radius: var(--radius-base); font-weight: 700;
+      box-shadow: 0 4px 6px rgba(239,68,68,.4);
+      transition: .25s;
+    }
+    .slides-container {
+      display: flex; transition: .6s;
+    }
+    .slide { min-width: 100%; }
+    .slide img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .dots {
+      text-align: center; margin-top: 1rem;
+    }
+    .dot {
+      display: inline-block; width: 12px; height: 12px;
+      margin: 0 6px; border-radius: 50%;
+      background: #e5e7eb; cursor: pointer;
+    }
+    .dot.active { background: var(--color-accent); }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 2rem; margin-top: 4rem; padding: 0 var(--space-base);
+    }
+    .card {
+      background: linear-gradient(145deg,#fff,#f3f4f6);
+      border-radius: var(--radius-base);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(239,68,68,.1);
+      transition: .3s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 32px rgba(239,68,68,.2);
+    }
+    .card svg {
+      width: 48px; height: 48px; margin-bottom: 1rem;
+      background: var(--color-accent); padding: 10px;
+      border-radius: 999px; stroke: white; stroke-width: 2;
+    }
+    .card h3 {
+      color: var(--color-accent); font-size: 1.35rem; font-weight: 700;
+    }
+    .card p { margin: .5rem 0 1.5rem; }
+    .card button {
+      padding: .75rem 1.25rem;
+      background: linear-gradient(90deg,#ef4444,#f87171);
+      border: none; border-radius: 999px; color: #fff;
+      font-weight: 600; cursor: pointer;
+      transition: .3s;
+    }
+    .card button:hover {
+      background: linear-gradient(90deg,#dc2626,#ef4444);
+    }
+
+    .about-section {
+      display: flex; flex-wrap: wrap;
+      box-shadow: 0 8px 24px rgba(0,0,0,.1); margin-top: 5rem;
+    }
+    .about-text {
+      flex: 1 1 400px; padding: 3rem 2rem;
+      background: linear-gradient(135deg,#f9d2d6 0%,#eec5ca 40%,#ddb4ba 100%);
+    }
+    .about-text h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem; font-weight: 800;
+      color: var(--color-accent); margin-bottom: 1.5rem;
+    }
+    .about-text p {
+      color: var(--color-text-primary);
+      font-size: 1.05rem; margin-bottom: 1.25rem;
+    }
+    .read-btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .8rem 1.6rem;
+      border: 2px solid var(--color-accent);
+      background: #fff; color: var(--color-accent);
+      border-radius: var(--radius-base);
+      font-weight: 600; transition: .3s;
+    }
+    .read-btn:hover {
+      background: var(--color-accent); color: #fff;
+    }
+    .about-img { flex: 1 1 400px; min-height: 350px; }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    .donation-section {
+      text-align: center; padding: 3rem var(--space-base);
+      background: linear-gradient(90deg,#fde6e6,#fdd0d0);
+      margin-top: 4rem;
+    }
+    .donation-section h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.2rem; margin-bottom: 2rem; color: #333;
+    }
+    .donation-section .highlight { color: var(--color-accent); }
+    .donation-steps {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; align-items: center; gap: 30px;
+    }
+    .step-box {
+      background: #fff; padding: 1.8rem 1.4rem;
+      border-radius: 16px; width: 280px;
+      box-shadow: 0 4px 10px rgba(0,0,0,.1);
+      transition: .3s;
+    }
+    .step-box:hover { transform: translateY(-5px); }
+    .step-box img { width: 60px; margin-bottom: 1rem; }
+    .step-box h3 { color: var(--color-accent); margin-bottom: .6rem; font-size: 1.15rem; }
+    .step-box p { font-size: .95rem; color: #555; }
+    .arrow { font-size: 2.5rem; color: #fff; }
+
+    .benefit-ribbon-wrapper {
+      background: #ffd3d3; padding: 40px 0; margin-top: 30px;
+      overflow: hidden;
+    }
+    .benefit-ribbon { display: flex; justify-content: center; overflow: hidden; }
+    .ribbon-track {
+      display: flex; gap: 30px; width: fit-content;
+      animation: scroll-reverse 10s ease-in-out infinite alternate;
+      padding: 0 15px;
+    }
+    .benefit-card {
+      flex: 0 0 260px;
+      padding: 30px 20px; background: #fff;
+      border-radius: 20px; text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,.1);
+      transition: transform .3s ease;
+    }
+    .benefit-card:hover { transform: translateY(-10px); }
+    .benefit-card img { width: 100px; height: 100px; object-fit: contain; margin-bottom: 20px; }
+    .benefit-card h3 { font-size: 1.2rem; margin-bottom: 10px; color: #4b2324; }
+    .benefit-card p { font-size: .95rem; color: #555; }
+
+    @keyframes scroll-reverse {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .link-heading h2 {
+      text-align: center; font-size: 2rem; color: var(--clr-accent);
+      transition: color .3s ease;
+    }
+    .link-heading h2:hover {
+      color: #F44336; text-decoration: underline;
+      cursor: pointer; animation: glow 1.5s infinite alternate;
+    }
+    .intro {
+      font-size: 1.1rem; color: var(--clr-text-muted);
+      margin-bottom: 2rem;
+    }
+    .grid {
+      display: grid; gap: 30px;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    }
+    .card-link { display: block; border-radius: var(--radius); }
+    .card img {
+      width: 100%; height: 180px; object-fit: cover;
+      transition: transform var(--dur) var(--easing);
+    }
+    .card:hover img { transform: scale(1.05); }
+    .card-body { padding: 20px; }
+    .card-body h3 { font-size: 1.25rem; margin-bottom: .5rem; }
+    .card-body p { color: var(--clr-text-muted); font-size: .95rem; }
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      animation: glow 1.5s infinite alternate;
+      border: 1px solid #ffd3d3;
+    }
+    .card.clicked {
+      border-color: var(--clr-accent);
+      box-shadow: 0 0 15px 5px rgba(255, 106, 0, 0.6);
+    }
+
+    @keyframes glow {
+      0%,100% { box-shadow: 0 0 5px #ffd3d3, 0 0 10px #ffd3d3; }
+      50% { box-shadow: 0 0 15px #ffd3d3, 0 0 25px #ffd3d3; }
+    }
+
+    footer {
+      width: 100%; background: #f3f4f6;
+      text-align: center; padding: 2rem 0;
+      color: #9ca3af; font-size: .9rem; margin-top: 4rem;
+    }
+    @media(max-width:700px){
+      .hero h1 { font-size: 2.25rem; }
+      .about-text h2 { font-size: 2rem; }
+      .step-box { width: 90%; }
+    }
+    @media(max-width:768px){
+      .ribbon-track { animation-duration: 14s; }
+      .benefit-card { flex: 0 0 220px; }
+    }
+        /* Dark Mode Styles */
+   body.dark {
+  background: #1a1a1a;
+  color: #aad8ff;
+}
+
+body.dark h1,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6,
+body.dark p,
+body.dark a,
+body.dark li,
+body.dark span,
+body.dark .card-body p,
+body.dark .about-text p,
+body.dark .step-box p,
+body.dark .benefit-card p,
+body.dark .card-body h3 {
+  color: #0088ff !important;
+}
+
+
+    body.dark .cta-button {
+      background: #e11d48;
+      color: white;
+    }
+    body.dark .card:hover,
+    body.dark .step-box:hover,
+    body.dark .benefit-card:hover {
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    }
+    body.dark .dot.active {
+      background: #f87171;
+    }
+
+    /* Chatbot Launcher Styles */
+    #chatbot-launcher {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--color-accent);
+      color: white;
+      padding: 14px 16px;
+      font-size: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,.3);
+      z-index: 9999;
+      transition: transform 0.3s;
+    }
+    #chatbot-launcher:hover {
+      transform: scale(1.1);
+    }
+    #darkToggle.glow {
+  background-color: #ff6600;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ff6600, 0 0 20px #ff6600;
+  transition: all 0.3s ease-in-out;
+}
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.link-heading h2 {
+  color: #d9534f; /* Optional: stylish red tone */
+  transition: color 0.3s ease;
+}
+
+.link-heading h2:hover {
+  color: orange; /* Glowing effect on hover */
+}
+
+.intro {
+  font-size: 16px;
+  color: #555;
+}
+
+h2 {
+  margin: 15px 0;
+}
+.quick-btn {
+  padding: 6px 10px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.quick-btn:hover {
+  background: #dc2626;
+}
+
+    #chatbot-launcher {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #ef4444;
+      color: white;
+      padding: 14px 16px;
+      font-size: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,.3);
+      z-index: 9999;
+    }
+    #chatbot-window {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 30px;
+      width: 320px;
+      height: 400px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 9999;
+      overflow: hidden;
+    }
+    #chat-content {
+      padding: 10px;
+      height: 340px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+    #chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+    #user-input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+    }
+    #send-btn {
+      padding: 10px 16px;
+      background: #ef4444;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .quick-btn {
+      padding: 6px 10px;
+      background: #ef4444;
+      color: white;
+      border: none;
+      border-radius: 16px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .quick-btn:hover {
+      background: #dc2626;
+    }
+  .hero {
+  background: linear-gradient(to right, #ffeaea, #fff5f5);
+  padding: 6rem 1rem 4rem;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 3.25rem;
+  animation: fadeIn 1s ease-in-out;
+}
+.cta-button {
+  background: linear-gradient(to right, #ef4444, #f87171);
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+  transition: all 0.3s ease;
+}
+.cta-button:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.1);
+  border-radius: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 15px 25px rgba(239, 68, 68, 0.2);
+}
+.dot {
+  background: #ef4444;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+.dot.active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+.benefit-ribbon-wrapper {
+  background: linear-gradient(to right, #ffe5e5, #fff3f3);
+  box-shadow: inset 0 -1px 0 #f5c2c2;
+  padding: 3rem 1rem;
+}
+.benefit-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.benefit-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(255, 106, 106, 0.3);
+}
+#chatbot-window {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  border: 1px solid #fdd;
+  backdrop-filter: blur(12px);
+}
+#chatbot-launcher {
+  background: linear-gradient(to right, #ef4444, #f87171);
+  border: none;
+  font-size: 24px;
+}
+@keyframes fadeInUp {
+  0% {opacity: 0; transform: translateY(30px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+.card, .benefit-card, .step-box {
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.emergency-container {
+  position: fixed;
+  bottom: 110px; /* 👈 Just above your chatbot button */
+  right: 30px;
+  z-index: 1000;
+}
+
+.floating-btn {
+  background-color: #d90429;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  font-size: 28px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  animation: floatUpDown 2s infinite;
+  transition: background 0.3s;
+}
+
+.floating-btn:hover {
+  background-color: #a80320;
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.option-btns {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 80px;
+  align-items: flex-end;
+}
+
+.option-btn {
+  background-color: #ef233c;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.4s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer-btn {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s;
+  }
+
+  .footer-btn:hover {
+    color: #d90429;
+    font-weight: 500;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer {
+    margin-top: auto;
+  }
+
+
+  </style>
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <img src="images/hj.jpg" class="heart-icon" alt="LIFE BANKED" />
+    <ul class="nav-links">
+      <li><a href="organ/organ.html">Find Donors</a></li>
+      <li><a href="campaign.html">Blood Campaign</a></li>
+      <li><a href="blood/donate/do.html">Donate Blood</a></li>
+      <li><a href="blood/request/index.html">Request Blood</a></li>
+      <li><a href="profile/pro.html">Profile</a></li>
+      <li><a href="logout.html">Logout</a></li>
+       <li>
+          <button id="darkToggle" style="background:none; border:none; cursor:pointer; font-size:1rem;">
+            🌙
+          </button>
+       </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Facilitating The Connection Of Lives Through Voluntary </h1>
+         <h1> Blood And Organ Donation</h1>
+    <p>Your trusted platform to find donors and give the gift of life.</p>
+    <a href="#find-donors" class="cta-button">Get Started</a>
+  </section>
+
+  <!-- SLIDESHOW -->
+  <section class="slideshow">
+    <div class="slides-container" id="slides">
+      <div class="slide"><img src="images/bloodwebsiyr.jpg"  alt="Slide 1"></div>
+      <div class="slide"><img src="images/deb.webp"  alt="Slide 2"></div>
+      <div class="slide"><img src="images/svj.jpg"  alt="Slide 3"></div>
+      <div class="slide"><img src="images/hny.jpg" alt="Slide 4"></div>
+    </div>
+    <div class="dots">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+      <span class="dot" onclick="goToSlide(3)"></span>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <article class="card">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 21c0-1.5-6-7.5-6-10a6 6 0 1 1 12 0c0 2.5-6 8.5-6 10z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>Find Donors</h3>
+      <p>Find compatible blood or organ donors near you in seconds.</p>
+      <button onclick="window.location.href='organ/organ.html'">Search Now</button>
+    </article>
+
+    <article class="card">
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="white"/>
+        <path d="M12 6v6l4 2" stroke="white"/>
+      </svg>
+      <h3>Donate Blood</h3>
+      <p>Register as a donor and get notified when someone needs your type.</p>
+      <button onclick="window.location.href='blood/donate/do.html'">Donate Now</button>
+    </article>
+
+    <article class="card">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M3 17h18M3 12h18M3 7h18" stroke="white"/>
+      </svg>
+      <h3>Request Blood</h3>
+      <p>Submit a request and quickly reach thousands of willing donors.</p>
+      <button onclick="window.location.href='blood/request/index.html'">Request Now</button>
+    </article>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="about-text">
+      <h2>About  LIFE BANKED</h2>
+      <p>Life Banked is a community-driven initiative dedicated to raising awareness, increasing participation, and streamlining the process of blood and organ donation. In a world where thousands of lives are lost daily due to a shortage of donors, our project serves as a vital link between donors and recipients—empowering people to give the ultimate gift: life.
+</p>
+      <p>Our mission is to build a culture of voluntary donation through education, advocacy, and accessible digital solutions. We aim to dispel myths, break taboos, and foster a compassionate society where saving lives becomes a shared responsibility.
+</p>
+      <a href="read.html" class="read-btn">Read More →</a>
+    </div>
+    <div class="about-img"><img src="images/42-40659825.webp" alt="Red blood cells"></div>
+  </section>
+
+  <!-- HOW DONATION WORKS -->
+  <section class="donation-section">
+    <h2><span class="highlight">How </span> Donation <span class="highlight">Works ?</span></h2>
+    <div class="donation-steps">
+      <div class="step-box"><img src="images/reg.jpg" alt="Registration"><h3>Registration Process</h3><p>Sign up and schedule your first donation with ease.</p></div>
+      <div class="arrow">›</div>
+      <div class="step-box"><img src="images/hrt.jpg" alt="Health Screening"><h3>Health Screening</h3><p>A quick check-up to ensure you’re ready to donate.</p></div>
+      <div class="arrow">›</div>
+      <div class="step-box"><img src="images/dn.jpg" alt="Donation Day"><h3>Donation Day</h3><p>Relax as our professional staff guide you through.</p></div>
+    </div>
+  </section>
+
+<!-- === 4-Card Ribbon with Bidirectional Scroll ========== -->
+ <section class="benefit-ribbon-wrapper">
+    <div class="benefit-ribbon">
+      <div class="ribbon-track">
+        <!-- Card 1 -->
+        <div class="benefit-card">
+          <img src="images/hu.jpg" alt="Register" />
+          <h3>1. Register</h3>
+          <p>Sign up on our platform with your basic details to become a donor.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="benefit-card">
+          <img src="images/HC1.png" alt="Screening" />
+          <h3>2. Health Check</h3>
+          <p>Get a quick medical screening to ensure you're eligible to donate.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="benefit-card">
+          <img src="images/qw.png" alt="Donation" />
+          <h3>3. Donate</h3>
+          <p>Donate blood at our nearest camp or center with our assistance.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="benefit-card">
+          <img src="images/sl.jpg" alt="Save Lives" />
+          <h3>4. Save Lives</h3>
+          <p>Your donation helps hospitals and patients in need immediately.</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="benefit-card">
+          <img src="images/ins.jpg" alt="Donation" />
+          <h3>5. INSPIRE OTHERS</h3>
+          <p>Share your story to motivate friends and family to become donors too</p>
+       </div>
+
+       <!-- Card 7 -->
+        <div class="benefit-card">
+          <img src="images/sc.jpg" alt="Donation" />
+          <h3>6. STAY CONNECTED</h3>
+          <p>We'll notify you when someone needs help again or for future donation drives.</p>
+       </div>
+    </div>
+  </section>
+
+<!-- ====================================================== -->
+
+<!-- ====================================================== -->
+<div class="container">
+   <a href="info/Who can donate/why-register/reg.html" class="link-heading">
+  <h2>WHY REGISTER ?</h2>
+</a>
+<p class="intro"> your one decision can save lives, give hope to families, and make a lasting impact on your community</p>
+
+
+    <b><h2>MORE  INFORMATION</h2></b>
+
+    <!-- ===== Card Grid ============================================ -->
+    <div class="grid">
+
+      <!-- Card 1 -->
+      <a href="who-can-donate.html" class="card-link">
+        <div class="card">
+          <img src="images/thibk.jpg" alt="Who can donate?" />
+          <div class="card-body">
+            <h3>Who can donate?</h3>
+            <p>Have a medical condition? You may still be able to donate. Get the facts.</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="How organ donors change lives.html" class="card-link">
+        <div class="card">
+          <img src="images/save1.jpg" alt="How donors change lives" />
+          <div class="card-body">
+            <h3>How organ donors change lives</h3>
+            <p>Read about people whose lives have been dramatically affected by donation.</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3 -->
+      <a href="law-changed.html" class="card-link">
+        <div class="card">
+          <img src="images/sucxs.jpg" alt="The law has changed" />
+          <div class="card-body">
+            <h3>The law has changed</h3>
+            <p>Organ-donation law has changed. Learn what this means for you.</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 4 -->
+      <a href="ethnicity-matters.html" class="card-link">
+        <div class="card">
+          <img src="images/prnt.jpg" alt="Why ethnicity matters" />
+          <div class="card-body">
+            <h3>Why ethnicity matters</h3>
+            <p>We need donors from every community. Find out why.</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 5 -->
+      <a href="talk-to-loved-ones.html" class="card-link">
+        <div class="card">
+          <img src="images/love.jpg" alt="Talk to loved ones" />
+          <div class="card-body">
+            <h3>Talk to your loved ones</h3>
+            <p>Whatever you decide, it's vital to let them know. Here's why.</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 6 -->
+      <a href="living-donor.html" class="card-link">
+        <div class="card">
+          <img src="images/FLW.jpg" alt="Become a living donor" />
+          <div class="card-body">
+            <h3>Become a living donor</h3>
+            <p>You can donate some organs while alive. Learn how.</p>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /.grid -->
+  </div>
+  <!-- ====================================================== -->
+
+    <!-- Chatbot Launcher -->
+  <div id="chatbot-launcher" onclick="openAssistant()" title="Need help? Chat with us!">
+    💬
+  </div>
+   <!-- Chatbot Popup -->
+<div id="chatbot-window" style="
+  position: fixed;
+  bottom: 90px;
+  right: 30px;
+  width: 320px;
+  height: 450px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+">
+  <div style="background: #ef4444; color: white; padding: 10px; font-weight: bold; text-align: center;">
+    LifeBanked Assistant 🤖
+  </div>
+  <div id="chat-content" style="flex: 1; padding: 10px; overflow-y: auto; font-size: 0.9rem;"></div>
+  <div style="display: flex; border-top: 1px solid #ddd;">
+    <input type="text" id="user-input" placeholder="Type your message..." style="
+      flex: 1; padding: 10px; border: none; outline: none; font-size: 0.9rem;" />
+    <button onclick="sendMessage()" style="
+      padding: 10px 15px; background: #ef4444; color: white; border: none; cursor: pointer;">➤</button>
+  </div>
+</div>
+<div class="emergency-container">
+  <button class="floating-btn" onclick="toggleOptions()">🚨</button>
+  <div class="option-btns" id="optionButtons">
+    <a href="tel:102" class="option-btn">🚑 Ambulance</a>
+    <a href="#" class="option-btn" onclick="alert('SOS Alert Sent!')">🆘 SOS</a>
+    <a href="tel:100" class="option-btn">🚓 Police</a>
+  </div>
+</div>
+
+   <!-- Footer Section -->
+<footer style="background-color: #f2f2f2; padding: 40px 20px 0; font-family: 'Segoe UI', sans-serif; margin: 0;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: auto;">
+    
+    <!-- Column 1 -->
+    <div style="flex: 1; min-width: 180px; margin: 10px;">
+      <h4 style="margin-bottom: 16px; color: #111;">Request Blood or Organ</h4>
+      <a class="footer-btn" href="blood/request/">Blood Availability</a>
+      <a class="footer-btn" href="organ/organ.html">Blood Availability</a>
+      <a class="footer-btn" href="#">Thalassemia Request</a>
+    </div>
+
+    <!-- Column 2 -->
+    <div style="flex: 1; min-width: 180px; margin: 10px;">
+      <h4 style="margin-bottom: 16px; color: #111;">Donate Blood or Organ </h4>
+      <a class="footer-btn" href="campaign.html">Blood campaign Camp</a>
+      <a class="footer-btn" href="organ/organ.html">Donor Login</a>
+      <a class="footer-btn" href="#">About Blood Donation</a>
+    </div>
+
+    <!-- Column 3 -->
+    <div style="flex: 1; min-width: 180px; margin: 10px;">
+      <h4 style="margin-bottom: 16px; color: #111;">Contact Us</h4>
+      <a class="footer-btn" href="#">📞1800*********</a>
+      <a class="footer-btn" href="#">📧lifebanked****@gmail.com</a>
+    </div>
+
+    <!-- Column 4 -->
+    <div style="flex: 1; min-width: 180px; margin: 10px;">
+      <h4 style="margin-bottom: 16px; color: #111;">About Us</h4>
+      <a class="footer-btn" href="#">About LifeBanked</a>
+      <a class="footer-btn" href="#">Notifications</a>
+      <a class="footer-btn" href="#">FAQs</a>
+      <a class="footer-btn" href="#">Gallery</a>
+      <a class="footer-btn" href="#">Video Gallery</a>
+
+    </div>
+
+    <!-- Column 5: App Links -->
+    <div style="flex: 1; min-width: 200px; margin: 10px;">
+      <h4 style="margin-bottom: 16px; color: #111;">Download LIFE BANKED App</h4>
+      <a href="#"><img src="images/hj.jpg" alt="App Store" style="height: 40px; margin-bottom: 8px;"></a><br>
+      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" style="height: 40px;"></a>
+    </div>
+  </div>
+  
+
+</main>
+
+<footer>&copy; 2024 LifeBanked. All rights reserved.</footer>
+
+<script>
+  /* simple autoplay slideshow */
+  const slides=document.getElementById('slides'),dots=document.querySelectorAll('.dot');let cur=0;
+  function update(){slides.style.transform=`translateX(-${cur*100}%)`;dots.forEach((d,i)=>d.classList.toggle('active',i===cur));}
+  function goToSlide(i){cur=i;update();}
+  setInterval(()=>{cur=(cur+1)%dots.length;update();},6000);update();
+
+  document.querySelectorAll('.card-link').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();                    // stop immediate jump
+        const card = this.querySelector('.card');
+        card.classList.add('clicked');         // add glow
+
+        // wait for the glow to register visually, then navigate
+        setTimeout(() => window.location.href = this.href, 300); // 0.3 s
+      });
+    });
+
+   // Slideshow and card click logic remain unchanged
+
+    // Dark Mode Toggle
+  const darkToggle = document.getElementById('darkToggle');
+
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    darkToggle.classList.toggle('glow');
+  });
+
+  function openAssistant() {
+    alert("Launching AI Assistant (integrate Eel, Dialogflow, or custom bot here).");
+  }
+ function openAssistant() {
+  const botWindow = document.getElementById('chatbot-window');
+  const chat = document.getElementById('chat-content');
+  const isOpen = botWindow.style.display === 'block';
+
+  if (isOpen) {
+    botWindow.style.display = 'none';
+  } else {
+    botWindow.style.display = 'block';
+    chat.innerHTML = '';
+
+    // Dynamic Greeting
+    let greeting = "Hello!";
+    const hour = new Date().getHours();
+    if (hour < 12) greeting = "Good morning! 🌅";
+    else if (hour < 18) greeting = "Good afternoon! ☀️";
+    else greeting = "Good evening! 🌙";
+
+    // Add greeting + quick reply buttons
+setTimeout(() => {
+  chat.innerHTML += `
+    <div style="margin-bottom: 12px;">
+      <strong>Bot:</strong> ${greeting} I'm your LifeBanked Assistant.<br>How can I help you today?
+    </div>
+  
+  `;
+  chat.scrollTop = chat.scrollHeight;
+}, 300);
+
+  }
+}
+
+
+function sendMessage() {
+  const input = document.getElementById('user-input');
+  const message = input.value.trim();
+  if (!message) return;
+
+  const chat = document.getElementById('chat-content');
+
+  // Append user message
+  chat.innerHTML += `<div style="margin-bottom: 10px;"><strong>You:</strong> ${message}</div>`;
+
+  // Basic bot response logic
+  let reply = "I'm not sure how to answer that yet.";
+
+  if (message.toLowerCase().includes("hello") || message.toLowerCase().includes("hi")) {
+    reply = "Hello! How can I help you today? 😊";
+  } else if (message.toLowerCase().includes("donate blood") || message.toLowerCase().includes("donate my blood")|| message.toLowerCase().includes("donate an blood")) {
+    reply = "🩸You can donate blood by clicking 'Donate Blood' from the top menu.";  
+  } else if (message.toLowerCase().includes("donate organ")|| message.toLowerCase().includes("donate my organ")|| message.toLowerCase().includes("donate an organ")) {
+    reply = "🫁 You can donate organ by clicking 'Find Donors after that you can simply click on Add Organ' from the top menu.";
+  } else if (message.toLowerCase().includes("need blood")|| message.toLowerCase().includes("need someones blood")) {
+    reply = "To request blood, click on 'Request Blood' in the top menu.";
+    } else if (message.toLowerCase().includes("need organ")|| message.toLowerCase().includes("donate someones organ")) {
+    reply = "🫁To request Organ, click on 'Find Donors' in the top menu.";
+  } else if (message.toLowerCase().includes("thank")) {
+    reply = "You're welcome! ❤️";
+  }else if (message.toLowerCase().includes("eligibility")) {
+    reply = "✅ You can donate if you're 18–65 years old, healthy, and meet basic criteria like weight and hemoglobin level";
+  }
+
+  // Append bot reply
+  setTimeout(() => {
+    chat.innerHTML += `<div style="margin-bottom: 10px;"><strong>Bot:</strong> ${reply}</div>`;
+    chat.scrollTop = chat.scrollHeight;
+  }, 500);
+
+  input.value = '';
+}
+  document.getElementById('user-input').addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // Prevent form submission or line breaks
+    sendMessage();          // Trigger send function
+  }
+});
+  document.addEventListener('click', function (event) {
+  const botWindow = document.getElementById('chatbot-window');
+  const launcher = document.getElementById('chatbot-launcher');
+
+  // If click is outside both the bot window and the launcher, close it
+  if (!botWindow.contains(event.target) && !launcher.contains(event.target)) {
+    botWindow.style.display = 'none';
+  }
+});
+let greeting = "Hello!";
+const hour = new Date().getHours();
+if (hour < 12) greeting = "Good morning! 🌅";
+else if (hour < 18) greeting = "Good afternoon! ☀️";
+else greeting = "Good evening! 🌙";
+
+chat.innerHTML += `<div style="margin-bottom: 10px;"><strong>Bot:</strong> ${greeting} I'm your LifeBanked Assistant. How can I assist you?</div>`;
+
+function quickReply(message) {
+  const chat = document.getElementById('chat-content');
+
+  // Display user message
+  chat.innerHTML += `<div style="text-align: right; margin-bottom: 10px;"><strong>You:</strong> ${message}</div>`;
+
+  // Define the bot's response
+  let reply = "I'm not sure how to answer that yet.";
+
+  if (message.toLowerCase().includes("donate blood")) {
+    reply = "You can donate blood by clicking 'Donate Blood' in the top menu, or visit the 'Donate Now' section for quick access.";
+  } else if (message.toLowerCase().includes("request blood")) {
+    reply = "To request blood, go to the top menu and click on 'Request Blood'. Fill in the form and submit your request.";
+  } else if (message.toLowerCase().includes("who can donate") || message.toLowerCase().includes("eligibility")) {
+    reply = "To donate blood, you must be between 18–65 years old, weigh at least 50kg, and be in good health. Learn more under 'Who can donate?'.";
+  } else if (message.toLowerCase().includes("organ donation")) {
+    reply = "Organ donation saves lives! You can learn more by clicking 'Find Donors' and selecting 'Add Organ'.";
+  } else if (message.toLowerCase().includes("thank")) {
+    reply = "You're welcome! ❤️";
+  } else if (message.toLowerCase().includes("hello") || message.toLowerCase().includes("hi")) {
+    reply = "Hi there! How can I assist you today? 😊";
+  }
+
+  // Append the bot reply
+  setTimeout(() => {
+    chat.innerHTML += `<div style="margin-bottom: 10px;"><strong>Bot:</strong> ${reply}</div>`;
+    chat.scrollTop = chat.scrollHeight;
+  }, 500);
+}
+
+function toggleOptions() {
+  const options = document.getElementById("optionButtons");
+  if (options.style.display === "flex") {
+    options.style.display = "none";
+  } else {
+    options.style.display = "flex";
+
+    // Trigger animation for each button
+    const btns = options.querySelectorAll(".option-btn");
+    btns.forEach((btn, i) => {
+      btn.style.animationDelay = `${i * 0.1}s`;
+      btn.classList.add("animated");
+    });
+  }
+}
+
+
+
+
+  
+</script>
+</body>
+</html>

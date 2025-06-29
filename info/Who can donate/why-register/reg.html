@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Organ Donation Info</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 30px;
+      color: #333;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .image-text {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .image-text img {
+      max-width: 300px;
+      border-radius: 8px;
+    }
+
+    .info-button {
+      color: #005eb8;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 10px 0;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .info-button.glow {
+      box-shadow: 0 0 10px 2px #00aaff;
+      background-color: #e0f7ff;
+      border-radius: 5px;
+    }
+
+    .info-button::after {
+      content: "▼";
+      margin-left: 8px;
+      font-size: 12px;
+    }
+
+    #extra-info {
+      display: none;
+      margin-top: 15px;
+      padding-left: 20px;
+      font-size: 16px;
+    }
+
+    #extra-info ul {
+      list-style-type: disc;
+    }
+
+    .faith-section {
+      margin-top: 40px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    #extra-info {
+  display: none;
+  margin-top: 15px;
+  padding: 20px;
+  border: 2px solid #0078d4;
+  border-radius: 8px;
+  background-color: #f0f8ff;
+  font-size: 16px;
+}
+
+#extra-info ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#extra-info li {
+  margin-bottom: 10px;
+}
+
+#extra-info a {
+  text-decoration: none;
+  color: #005eb8;
+  font-weight: 500;
+}
+
+#extra-info a:hover {
+  text-decoration: underline;
+}
+
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>Why register an organ donation decision?</h1>
+
+    <div class="image-text">
+      <img src="imagesss/conf.jpg" alt="Confused woman" />
+      <div>
+        <p>When you register your organ donation decision, you are helping your loved ones to know what you want.</p>
+        <p>Organ donation will only go ahead with the support of your family, and clinicians will never proceed with organ donation if your family or loved ones object.</p>
+        <p>If you are able to become an organ donor in the future, a specialist nurse will check the NHS Organ Donor Register to see if you had recorded a decision and discuss this with those closest to you.</p>
+        <p>Without your decision to help them, your loved ones may be unsure what to do.</p>
+        <p>Act now to save lives in future.</p>
+
+        <button id="infoBtn" class="info-button">Get more information</button>
+
+        <div id="extra-info">
+  <ul>
+    <li>
+      🎥 <a href="https://www.youtube.com/watch?v=EXAMPLE1" target="_blank">
+        Watch our video to see how your family is involved
+      </a>
+    </li>
+    <li>
+      💬 <a href="https://www.youtube.com/watch?v=EXAMPLE2" target="_blank">
+        Get tips on how to talk to your loved ones about organ donation
+      </a>
+    </li>
+    <li>
+      📘 <a href="https://www.youtube.com/watch?v=EXAMPLE3" target="_blank">
+        Get more information about how consent for organ donation is established
+      </a>
+    </li>
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <div class="faith-section">
+      <h2>Our faith and beliefs commitment</h2>
+      <p>If you record a decision to become an organ donor, you also have the opportunity to say whether you would like NHS staff to speak to your family and anyone else appropriate about how organ donation can go ahead in line with your faith or beliefs.</p>
+      <p>We are committed to supporting your faith and beliefs throughout the organ or tissue donation process.</p>
+      <p>In the event of your death we will tell your family that your faith and beliefs are important to you, support your family to speak to your faith leader or a representative of your belief system, and provide information to support the discussions.</p>
+    </div>
+  </div>
+
+  <script>
+    const infoBtn = document.getElementById('infoBtn');
+    const extraInfo = document.getElementById('extra-info');
+
+    infoBtn.addEventListener('click', () => {
+      // Add glow effect
+      infoBtn.classList.add('glow');
+
+      // Remove glow after 600ms
+      setTimeout(() => {
+        infoBtn.classList.remove('glow');
+      }, 600);
+
+      // Toggle the extra info section
+      if (extraInfo.style.display === 'none' || extraInfo.style.display === '') {
+        extraInfo.style.display = 'block';
+      } else {
+        extraInfo.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

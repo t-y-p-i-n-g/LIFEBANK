@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login - LifeBanked</title>
+<style>
+  :root {
+    --color-bg: #ffffff;
+    --color-text-primary: #111827;
+    --color-text-secondary: #6b7280;
+    --color-accent: #1f2937; /* dark for button background */
+    --color-accent-text: #ffffff;
+    --color-accent-hover: #374151;
+    --color-card-bg: #f9fafb;
+    --color-shadow-light: rgba(0,0,0,0.05);
+    --font-headline: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --space-base: 1rem;
+    --radius-base: 12px;
+    --transition-base: 0.3s cubic-bezier(0.4,0,0.2,1);
+    --max-content-width: 480px;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text-secondary);
+    font-size: 18px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    background: var(--color-bg);
+    box-shadow: 0 2px 6px var(--color-shadow-light);
+    z-index: 100;
+  }
+  .container {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 var(--space-base);
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-base) 0;
+  }
+  .logo {
+    font-family: var(--font-headline);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    user-select: none;
+  }
+  ul.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  ul.nav-links li {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  ul.nav-links li a {
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-base);
+    transition: background-color var(--transition-base);
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  ul.nav-links li a:hover,
+  ul.nav-links li a:focus {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    outline: none;
+  }
+  main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+  }
+  .login-card {
+    background: var(--color-card-bg);
+    width: 100%;
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-base);
+    box-shadow: 0 4px 12px var(--color-shadow-light);
+  }
+  h1 {
+    font-family: var(--font-headline);
+    font-weight: 700;
+    font-size: 3rem;
+    color: var(--color-text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.1;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-text-primary);
+    user-select: none;
+  }
+  input[type="email"],
+  input[type="password"] {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: var(--radius-base);
+    border: 1px solid #d1d5db;
+    transition: border-color var(--transition-base);
+    font-family: var(--font-body);
+    color: var(--color-text-primary);
+  }
+  input[type="email"]::placeholder,
+  input[type="password"]::placeholder {
+    color: var(--color-text-secondary);
+  }
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    border-color: var(--color-accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.3);
+  }
+  button[type="submit"] {
+    margin-top: 1.5rem;
+    padding: 0.85rem 0;
+    font-weight: 700;
+    font-size: 1.25rem;
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border: none;
+    border-radius: var(--radius-base);
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(31, 41, 55, 0.4);
+    transition: background-color var(--transition-base), transform 0.25s ease;
+    user-select: none;
+  }
+  button[type="submit"]:hover,
+  button[type="submit"]:focus {
+    background-color: var(--color-accent-hover);
+    outline: none;
+    transform: scale(1.05);
+  }
+  .signup-link {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+  }
+  .signup-link a {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+  .signup-link a:hover,
+  .signup-link a:focus {
+    color: var(--color-accent-hover);
+    outline: none;
+  }
+  footer {
+    background: #f3f4f6;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    color: #9ca3af;
+  }
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2.25rem;
+    }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav aria-label="Primary navigation">
+      <div class="logo" tabindex="0">LifeBanked</div>
+      <ul class="nav-links">
+        <li><a href="main.html">Home</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="container" role="main">
+  <section class="login-card" aria-labelledby="login-title">
+    <h1 id="login-title">Log in to LifeBanked</h1>
+    <form id="login-form" novalidate>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@example.com" />
+      
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required placeholder="Your password" />
+      
+      <button type="submit">Log In</button>
+    </form>
+    <div class="signup-link">
+      Don't have an account? <a href="signup.html">Sign up</a>
+    </div>
+  </section>
+</main>
+<footer>
+  &copy; 2024 LifeBanked. All rights reserved.
+</footer>
+<script>
+  const form = document.getElementById('login-form');
+  form.addEventListener('submit', e => {   
+    e.preventDefault();
+    const email = form.email.value.trim();
+    const password = form.password.value;
+    if (!email || !password) {
+      alert('Please enter both email and password');
+      return;
+    }
+    alert(\`Logged in as \${email}\`);
+    // In real app, redirect to profile or main page here
+    form.reset();
+  });
+</script>
+</body>
+</html>
+

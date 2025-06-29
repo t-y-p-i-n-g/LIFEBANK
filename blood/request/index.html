@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find Blood Donors</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <div class="form-box">
+      <h1>FIND BLOOD DONORS</h1>
+
+      <label for="bloodGroup">Blood Group</label>
+      <select id="bloodGroup">
+        <option>-----Select-----</option>
+        <option>A+</option><option>A-</option>
+        <option>B+</option><option>B-</option>
+        <option>AB+</option><option>AB-</option>
+        <option>O+</option><option>O-</option>
+      </select>
+
+      <label for="country">Select Country <span class="spinner" id="spinner-country"></span></label>
+      <select id="country" onchange="fetchStates()">
+        <option>-----Select-----</option>
+      </select>
+
+      <label for="state">Select State <span class="spinner" id="spinner-state"></span></label>
+      <select id="state" onchange="fetchCities()">
+        <option>-----Select-----</option>
+      </select>
+
+      <label for="city">Select City <span class="spinner" id="spinner-city"></span></label>
+      <select id="city">
+        <option>-----Select-----</option>
+      </select>
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" placeholder="Enter your email" />
+
+      <button id="searchBtn">SUBMIT</button>
+    </div>
+
+    <div class="image-box">
+      <img src="img/dnatn.jpg" alt="Blood Donation">
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>✅ THANK YOU FOR SUBMITTING</h2>
+      <p>We'll notify you through 📧 email when a donor becomes available</p>
+      <p id="summaryText"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

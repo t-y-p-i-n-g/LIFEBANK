@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find Donors / Organs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="relative bg-gray-100 text-gray-800 p-6">
+
+  <!-- 🔳 Background Image with Blur -->
+  <div class="fixed inset-0 -z-10">
+    <div class="absolute inset-0 bg-cover bg-center blur-sm opacity-40"
+         style="background-image: url('ima/image.png');"></div>
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+  </div>
+
+  <!-- 🔲 Main Content -->
+  <div class="relative z-10 container mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-white">Organ / Donor Availability</h1>
+
+    <!-- 🔘 Add Organ Button -->
+    <button class="bg-black text-white px-4 py-2 rounded mb-4" onclick="openModal()">
+      ➕ Add Organ
+    </button>
+
+    <!-- 📋 Organ Table -->
+    <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Expiration Deadline</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Description</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Image</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Available Count</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">PIN Code</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Created at</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Updated at</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <!-- 🧪 Sample Row -->
+          <tr>
+            <td class="px-6 py-4">Apr 16 2023 6:41 PM</td>
+            <td class="px-6 py-4">Blood Type B…</td>
+            <td class="px-6 py-4">
+              <img src="https://via.placeholder.com/40" class="rounded" />
+            </td>
+            <td class="px-6 py-4 text-green-600 font-semibold">Active</td>
+            <td class="px-6 py-4">2</td>
+            <td class="px-6 py-4">Lungs</td>
+            <td class="px-6 py-4">411256</td>
+            <td class="px-6 py-4">Apr 16 2023 2:41 PM</td>
+            <td class="px-6 py-4">Apr 16 2023 2:41 PM</td>
+            <td class="px-6 py-4 space-x-2">
+              <button class="text-green-600">✏️</button>
+              <button class="text-red-600">🗑️</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="p-4 text-gray-600 text-sm">Total: 3 organs found</div>
+    </div>
+  </div>
+
+  <!-- 📦 Add Organ Modal -->
+  <div id="addOrganModal"
+       class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+
+    <div class="bg-white w-11/12 md:w-3/4 lg:w-1/2 rounded-lg p-6 relative">
+
+      <!-- ❌ Close Button -->
+      <button class="absolute top-3 right-4 text-xl font-bold text-gray-600 hover:text-red-500"
+              onclick="closeModal()">
+        &times;
+      </button>
+
+      <h2 class="text-xl font-semibold mb-6">Add Organ</h2>
+
+      <form id="organForm" class="space-y-4">
+
+        <!-- 🕒 Time and PIN -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Time Window *</label>
+            <input type="number" required class="w-full border rounded p-2">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">PIN Code *</label>
+            <input type="text" required class="w-full border rounded p-2">
+          </div>
+        </div>
+
+        <!-- 📝 Description -->
+        <div>
+          <label class="block text-sm font-medium mb-1">Organ Description *</label>
+          <textarea required class="w-full border rounded p-2" rows="2"></textarea>
+        </div>
+
+        <!-- 📷 Images -->
+        <div>
+          <label class="block text-sm font-medium mb-1">Organ Images * <span class="text-xs text-gray-500">(need 2 images)</span></label>
+          <input type="file" accept="image/*" multiple required class="w-full">
+        </div>
+
+        <!-- ⚙️ Status and Category -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Organ Status *</label>
+            <select required class="w-full border rounded p-2">
+              <option>Active</option>
+              <option>Inactive</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Organ Category *</label>
+            <select required class="w-full border rounded p-2">
+              <option>Heart</option>
+              <option>Lungs</option>
+              <option>Kidney</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 🔢 Units -->
+        <div>
+          <label class="block text-sm font-medium mb-1">Units Available *</label>
+          <input type="number" required class="w-full border rounded p-2">
+        </div>
+
+        <!-- 🚀 Submit -->
+        <button type="submit"
+                class="w-full bg-black text-white py-2 rounded-full mt-2">
+          Add Organ
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- 🧠 JavaScript -->
+  <script>
+    const modal = document.getElementById('addOrganModal');
+
+    function openModal () {
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal () {
+      modal.classList.add('hidden');
+    }
+
+    // Close on outside click
+    window.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Form Submission Demo
+    document.getElementById('organForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Organ added (demo only).');
+      closeModal();
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

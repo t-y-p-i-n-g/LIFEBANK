@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sign Up - LifeBanked</title>
+<style>
+  :root {
+    --color-bg: #ffffff;
+    --color-text-primary: #111827;
+    --color-text-secondary: #6b7280;
+    --color-accent: #ef4444;
+    --color-accent-hover: #dc2626;
+    --color-card-bg: #f9fafb;
+    --color-shadow-light: rgba(0,0,0,0.05);
+    --font-headline: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --space-base: 1rem;
+    --radius-base: 12px;
+    --transition-base: 0.3s cubic-bezier(0.4,0,0.2,1);
+    --max-content-width: 480px;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text-secondary);
+    font-size: 18px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    background: var(--color-bg);
+    box-shadow: 0 2px 6px var(--color-shadow-light);
+    z-index: 100;
+  }
+  .container {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 var(--space-base);
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-base) 0;
+  }
+  .logo {
+    font-family: var(--font-headline);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    user-select: none;
+  }
+  ul.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  ul.nav-links li a {
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-base);
+    transition: background-color var(--transition-base);
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  ul.nav-links li a:hover,
+  ul.nav-links li a:focus {
+    background-color: var(--color-accent);
+    color: white;
+    outline: none;
+  }
+  main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+  }
+  .signup-card {
+    background: var(--color-card-bg);
+    width: 100%;
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-base);
+    box-shadow: 0 4px 12px var(--color-shadow-light);
+  }
+  h1 {
+    font-family: var(--font-headline);
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--color-text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-text-primary);
+    user-select: none;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: var(--radius-base);
+    border: 1px solid #d1d5db;
+    transition: border-color var(--transition-base);
+    font-family: var(--font-body);
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    border-color: var(--color-accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(239,68,68,0.3);
+  }
+  button[type="submit"] {
+    margin-top: 1.5rem;
+    padding: 0.85rem 0;
+    font-weight: 700;
+    font-size: 1.25rem;
+    background-color: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius-base);
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.4);
+    transition: background-color var(--transition-base), transform 0.25s ease;
+    user-select: none;
+  }
+  button[type="submit"]:hover,
+  button[type="submit"]:focus {
+    background-color: var(--color-accent-hover);
+    outline: none;
+    transform: scale(1.05);
+  }
+  .login-link {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1rem;
+  }
+  .login-link a {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+  .login-link a:hover,
+  .login-link a:focus {
+    color: var(--color-accent-hover);
+    outline: none;
+  }
+  footer {
+    background: #f3f4f6;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    color: #9ca3af;
+  }
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav aria-label="Primary navigation">
+      <div class="logo" tabindex="0">LifeBanked</div>
+      <ul class="nav-links">
+        <li><a href="main.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="container" role="main">
+  <section class="signup-card" aria-labelledby="signup-title">
+    <h1 id="signup-title">Create an Account</h1>
+    <form id="signup-form" novalidate>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" autocomplete="name" required placeholder="Your full name" />
+      
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@example.com" />
+      
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="new-password" required minlength="6" placeholder="At least 6 characters" />
+      
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" name="confirm-password" autocomplete="new-password" required minlength="6" placeholder="Re-enter your password" />
+      
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="login-link">
+      Already have an account? <a href="login.html">Log in</a>
+    </div>
+  </section>
+</main>
+<footer>
+  &copy; 2024 LifeBanked. All rights reserved.
+</footer>
+<script>
+  const form = document.getElementById('signup-form');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const password = form.password.value;
+    const confirmPassword = form['confirm-password'].value;
+    if (!name || !email || !password || !confirmPassword) {
+      alert('Please fill all fields');
+      return;
+    }
+    if (password.length < 6) {
+      alert('Password should be at least 6 characters');
+      return;
+    }
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+    alert(\'Registration successful for \${name} (\${email})\'');
+    form.reset();
+  });
+</script>
+</body>
+</html>
